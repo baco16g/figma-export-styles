@@ -1,12 +1,12 @@
 {
-  "name": "figma-export-typography",
+  "name": "figma-export-styles",
   "version": "1.0.0",
   "description": "",
   "main": "./build/cli.js",
   "types": "./build/cli.d.ts",
   "type": "module",
   "bin": {
-    "figma-export-typography": "./build/cli.js"
+    "figma-export-styles": "./build/cli.js"
   },
   "scripts": {
     "build": "tsc",
@@ -17,14 +17,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/baco16g/figma-export-typography.git"
+    "url": "git+ssh://git@github.com/baco16g/figma-export-styles.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/baco16g/figma-export-typography/issues"
+    "url": "https://github.com/baco16g/figma-export-styles/issues"
   },
-  "homepage": "https://github.com/baco16g/figma-export-typography#readme",
+  "homepage": "https://github.com/baco16g/figma-export-styles#readme",
   "dependencies": {
     "cac": "^6.7.12",
     "dedent": "^0.7.0",

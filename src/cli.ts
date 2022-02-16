@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 
-import fs from 'fs';
-import path from 'path';
-import cac from 'cac';
-import { listTypographies } from './helper/figma.js';
-import { build as buildScss } from './helper/scss.js';
+import fs from 'fs'
+import path from 'path'
+import cac from 'cac'
+import { listStyles } from './helper/figma.js'
+import { buildFill, buildTypography } from './helper/scss.js'
 
 interface CliOption {
-  token: string;
-  outDir: string;
+  token: string
+  outDir: string
 }
 
-const cli = cac('figma-export-typography');
+const cli = cac('figma-export-typography')
 
 const run = () => {
   cli
@@ -25,16 +25,21 @@ const run = () => {
       { default: './output' },
     )
     .action(async (fileId, options: CliOption) => {
-      const typographies = await listTypographies(options.token, fileId);
+      const styles = await listStyles(options.token, fileId)
+      if (!styles) return
       await fs.promises.access(options.outDir).catch(async () => {
-        await fs.promises.mkdir(options.outDir);
-      });
+        await fs.promises.mkdir(options.outDir)
+      })
       await fs.promises.writeFile(
         path.join(options.outDir, 'typography.scss'),
-        buildScss(typographies),
-      );
-    });
-  cli.parse();
-};
+        buildTypography(styles.typographies),
+      )
+      await fs.promises.writeFile(
+        path.join(options.outDir, 'color.scss'),
+        buildFill(styles.fills),
+      )
+    })
+  cli.parse()
+}
 
-run();
+run()

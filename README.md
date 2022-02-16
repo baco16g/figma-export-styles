@@ -1,4 +1,4 @@
-# figma-export-typography
+# figma-export-styles
 
 ## Usage
 
@@ -6,7 +6,7 @@
 $ npm run build
 $ node build/cli.js build {file_id} --token={personal_access_token}
 
-$ cat output/typography.scss
+$ cat output/styles.scss
 @mixin JA_Body1_500_normal {
   font-family: "Noto Sans JP";
   font-size: 1.6rem;
